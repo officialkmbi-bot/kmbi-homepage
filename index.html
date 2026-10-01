@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="img/symbol.png">
+</head>
+<body>
+<title>소상공인연구원</title>
+<meta name="description" content="사단법인 소상공인연구원(Korea Micro Business Institute) 소상공인·소공인 정책연구기관">
+<style>
+@font-face{font-family:"Pretendard Variable";src:url("fonts/PretendardVariable.woff2") format("woff2-variations");font-weight:45 920;font-style:normal;font-display:swap}
+/* Layout: one bold moment (the CI dot field bleeding off the hero's right edge); everything after is a calm, left-aligned research register. Reports sit on a bookshelf. */
+:root{
+  --red:#C8002B;        /* CI 심벌 레드 C0 M100 Y80 K20 */
+  --red-deep:#A10022;
+  --gold:#B89400;       /* CI 골드 */
+  --ink:#1F1D20;
+  --gray:#4A474B;       /* CI 로고타입 K75 */
+  --muted:#7A7478;
+  --paper:#FFFFFF;
+  --mist:#F4F2F2;
+  --line:#E6E1E2;
+  --line-strong:#CEC7C9;
+  --foot-bg:#1F1D20;
+  --foot-fg:#B9B2B5;
+  --serif:"Pretendard Variable","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --sans:"Pretendard Variable","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --wrap:1200px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --red:#FF4D67;--red-deep:#FF7A8D;--gold:#E0BE3A;--ink:#EFEBEC;--gray:#D2CCCF;--muted:#A39CA0;
+  --paper:#161416;--mist:#1E1B1D;--line:#2E2A2D;--line-strong:#463F43;--foot-bg:#0F0E0F;--foot-fg:#A39CA0;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --red:#FF4D67;--red-deep:#FF7A8D;--gold:#E0BE3A;--ink:#EFEBEC;--gray:#D2CCCF;--muted:#A39CA0;
+  --paper:#161416;--mist:#1E1B1D;--line:#2E2A2D;--line-strong:#463F43;--foot-bg:#0F0E0F;--foot-fg:#A39CA0;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;letter-spacing:-0.01em;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.3;text-wrap:balance;margin:0;letter-spacing:-0.03em}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:clamp(16px,4.5vw,48px)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+.num{font-variant-numeric:tabular-nums}
+.view[hidden]{display:none!important}
+
+/* ---------- masthead ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:saturate(1.4) blur(10px)}
+.top::after{content:"";position:absolute;inset:auto 0 0;height:1px;background:var(--line)}
+.top .wrap{display:flex;align-items:center;gap:32px;height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.brand img{width:38px;height:38px}
+.brand b{display:block;font-size:19px;font-weight:700;color:var(--gray);letter-spacing:-0.03em;line-height:1.15}
+.brand small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:0.01em;line-height:1.3}
+.nav{margin-left:auto;display:flex;gap:2px}
+.nav a{position:relative;text-decoration:none;font-size:15px;font-weight:500;padding:10px 14px;color:var(--gray)}
+.nav a:hover{color:var(--ink)}
+.nav a[aria-current="page"]{color:var(--ink);font-weight:600}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:50%;bottom:2px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--red)}
+@media (max-width:860px){
+  .top .wrap{flex-wrap:wrap;height:auto;gap:0;padding-block:12px 0}
+  .nav{margin:4px -12px 0;width:calc(100% + 24px);overflow-x:auto;scrollbar-width:none}
+  .nav a{white-space:nowrap;padding:10px 12px 14px;font-size:14px}
+}
+
+/* ---------- hero (the one bold moment) ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero canvas{position:absolute;top:50%;left:72%;width:min(1100px,110vw);height:min(1100px,110vw);transform:translate(-50%,-50%);pointer-events:none}
+.hero .mark{position:absolute;top:50%;left:72%;width:min(250px,25vw);transform:translate(-50%,-50%)}
+.hero > .wrap{position:relative;padding-block:clamp(72px,11vw,148px) clamp(56px,8vw,104px)}
+.hero h1{font-size:clamp(34px,5.4vw,66px);line-height:1.2;letter-spacing:-0.035em;font-weight:720;max-width:11em;color:var(--ink)}
+.hero .lead{font-size:clamp(16px,1.5vw,18px);color:var(--gray);max-width:30em;margin:28px 0 0}
+.hero .lead::before{content:"";display:block;width:40px;height:2px;background:var(--red);margin-bottom:24px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;text-decoration:none;font-weight:600;font-size:15px;padding:13px 22px;border-radius:999px;border:1px solid var(--line-strong);color:var(--ink);background:var(--paper);transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:var(--red);border-color:var(--red)}
+.facts-strip{position:relative;border-top:1px solid var(--line);background:color-mix(in srgb,var(--paper) 88%,transparent)}
+.facts-strip .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.facts-strip .wrap > div{padding:20px 20px 22px 0;font-size:14px;color:var(--muted)}
+.facts-strip .wrap > div + div{padding-left:20px;border-left:1px solid var(--line)}
+.facts-strip .wrap > div b{display:block;font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:-0.03em;color:var(--ink);margin-bottom:2px}
+@media (max-width:860px){
+  .hero canvas{left:78%;top:128px;width:640px;height:640px}
+  .hero .mark{left:78%;top:128px;width:136px}
+  .hero > .wrap{padding-top:250px}
+  .facts-strip .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts-strip .wrap > div{padding:16px 12px 16px 0!important;border-left:0!important}
+  .facts-strip .wrap > div:nth-child(even){padding-left:16px!important;border-left:1px solid var(--line)!important}
+  .facts-strip .wrap > div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+
+/* ---------- sections ---------- */
+.block{padding-block:clamp(64px,8vw,104px)}
+.block + .block{border-top:1px solid var(--line)}
+.block.mist{background:var(--mist);border-top:0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 24px;margin-bottom:40px}
+.sec-head h2{font-size:clamp(26px,2.8vw,34px)}
+.sec-head p{margin:10px 0 0;color:var(--muted);max-width:38em}
+.more{font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:6px;white-space:nowrap}
+.more:hover{color:var(--red)}
+
+/* what we do */
+.work{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px)}
+.work .intro h2{font-size:clamp(26px,2.8vw,34px)}
+.work .intro p{font-size:19px;line-height:1.8;color:var(--gray);margin:20px 0 0}
+.work dl{margin:0;border-top:1px solid var(--ink)}
+.work dl > div{display:grid;grid-template-columns:9em minmax(0,1fr);gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.work dt{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:-0.03em}
+.work dd{margin:0;color:var(--gray)}
+@media (max-width:860px){.work{grid-template-columns:1fr}.work dl > div{grid-template-columns:1fr;gap:6px}}
+
+/* news + disclosure */
+.split{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px)}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.news{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.news li{border-bottom:1px solid var(--line)}
+.news a{display:grid;grid-template-columns:6.4em minmax(0,1fr) auto;gap:18px;align-items:baseline;padding:18px 0;text-decoration:none}
+.news a:hover .t{color:var(--red)}
+.news .t{font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.news .d{font-size:13.5px;color:var(--muted)}
+@media (max-width:520px){.news a{grid-template-columns:minmax(0,1fr) auto}.news .pill{display:none}}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;color:var(--gray);background:var(--mist);border-radius:999px;padding:2px 10px;white-space:nowrap;justify-self:start}
+.pill.red{color:var(--red);background:color-mix(in srgb,var(--red) 9%,transparent)}
+.ledger{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:clamp(22px,3vw,32px)}
+.ledger h3{font-size:21px}
+.ledger .unit{font-size:13px;color:var(--muted);margin:6px 0 14px}
+.ledger table{width:100%;border-collapse:collapse;font-size:15px}
+.ledger th,.ledger td{padding:12px 0;border-top:1px solid var(--line);text-align:right;font-weight:500}
+.ledger th{text-align:left;font-weight:600}
+.ledger thead th,.ledger thead td{border-top:0;font-size:13px;color:var(--muted);font-weight:500;padding-top:0}
+.ledger p{font-size:13.5px;color:var(--muted);margin:16px 0 20px}
+.mist .news{border-top-color:var(--ink)}
+
+/* bookshelf */
+.shelf{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,176px);gap:28px;overflow-x:auto;padding:4px 4px 20px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.book{scroll-snap-align:start;min-width:0}
+.reports{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:44px 28px}
+.cover{position:relative;aspect-ratio:200/283;border-radius:2px 4px 4px 2px;overflow:hidden;background:var(--mist);box-shadow:0 1px 1px rgba(30,20,25,.08),0 8px 18px -8px rgba(30,20,25,.35);transition:transform .2s}
+.cover img{width:100%;height:100%;object-fit:cover}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.16),rgba(255,255,255,.18) 3%,rgba(0,0,0,0) 7%);pointer-events:none}
+.book:hover .cover{transform:translateY(-4px)}
+.book .meta{display:flex;gap:8px;align-items:center;margin-top:16px}
+.book .y{font-size:13px;color:var(--muted)}
+.book .n{font-size:14.5px;font-weight:500;line-height:1.55;margin-top:6px}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--line-strong);background:var(--paper);color:var(--gray);padding:7px 15px;border-radius:999px;cursor:pointer}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+@media (prefers-reduced-motion:reduce){.cover{transition:none}.book:hover .cover{transform:none}}
+
+/* page title */
+.page-title{padding-block:clamp(56px,7vw,88px) clamp(40px,5vw,56px);border-bottom:1px solid var(--line)}
+.page-title h1{font-size:clamp(32px,4vw,48px);display:flex;align-items:center;gap:16px}
+.page-title h1 img{width:34px;height:34px}
+.page-title p{margin:14px 0 0;color:var(--gray);max-width:42em;font-size:17px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,88px)}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr}}
+.prose p{margin:0 0 1.1em;max-width:34em;color:var(--gray)}
+.prose p.big{font-size:23px;line-height:1.6;color:var(--ink);font-weight:650;letter-spacing:-0.03em}
+.facts{width:100%;border-collapse:collapse;border-top:1px solid var(--ink);font-size:15px}
+.facts th,.facts td{text-align:left;padding:15px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.facts th{width:8.5em;font-weight:600;color:var(--muted);white-space:nowrap;padding-right:16px}
+.ci{display:grid;grid-template-columns:150px minmax(0,1fr);gap:32px;align-items:center}
+.ci img{width:150px}
+.ci p{margin:0 0 10px;color:var(--gray)}
+.swatches{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--muted)}
+.swatches span{display:inline-flex;align-items:center;gap:7px}
+.swatches i{width:14px;height:14px;border-radius:50%;display:inline-block}
+@media (max-width:520px){.ci{grid-template-columns:1fr}.ci img{width:110px}}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline .yr{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.timeline .yr:first-child{border-top:1px solid var(--ink)}
+.timeline .yr > b{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.2}
+.timeline .ev{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:12px;font-size:15px;padding:3px 0}
+.timeline .ev span{color:var(--red);font-weight:600}
+
+/* disclosure */
+.dtable-wrap{overflow-x:auto}
+.dtable{width:100%;min-width:540px;border-collapse:collapse;border-top:1px solid var(--ink);font-size:15px}
+.dtable th,.dtable td{padding:15px 12px;border-bottom:1px solid var(--line);text-align:center}
+.dtable thead th{font-weight:600;color:var(--muted);font-size:14px}
+.dtable td.r{text-align:right}
+.note{border-radius:8px;background:var(--mist);padding:18px 22px;font-size:14.5px;color:var(--gray);margin-top:24px;max-width:60em}
+.mist .note{background:var(--paper)}
+.links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.links{grid-template-columns:1fr}}
+.links a{display:flex;flex-direction:column;gap:4px;padding:24px;border:1px solid var(--line);border-radius:10px;text-decoration:none;background:var(--paper);transition:border-color .15s}
+.links a:hover{border-color:var(--ink)}
+.links b{font-size:17px}
+.links span{font-size:14px;color:var(--muted)}
+.links small{font-size:13px;color:var(--red);font-weight:600;margin-top:10px}
+
+/* board */
+.board-tools{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:20px}
+.search{display:flex;align-items:center;border:1px solid var(--line-strong);border-radius:999px;padding:3px 3px 3px 16px;background:var(--paper)}
+.search:focus-within{border-color:var(--ink)}
+.search input{font:inherit;font-size:15px;border:0;outline:0;background:transparent;color:var(--ink);width:min(220px,48vw)}
+.search button{font:inherit;font-size:14px;font-weight:600;padding:7px 16px;border:0;background:var(--ink);color:var(--paper);border-radius:999px;cursor:pointer}
+.btable{width:100%;border-collapse:collapse;border-top:1px solid var(--ink);font-size:15px}
+.btable th{font-size:13.5px;font-weight:500;color:var(--muted);padding:13px 8px;border-bottom:1px solid var(--line)}
+.btable td{padding:17px 8px;border-bottom:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+.btable td.ttl{text-align:left;color:var(--ink);font-size:15.5px}
+.btable td.ttl a{text-decoration:none;font-weight:500}
+.btable tr:hover td.ttl a{color:var(--red)}
+.clip{margin-left:8px;font-size:12px;color:var(--muted);border:1px solid var(--line-strong);border-radius:4px;padding:0 6px;vertical-align:2px}
+.c-no{width:4.5em}.c-cat{width:8em}.c-date{width:7.5em}
+@media (max-width:640px){
+  .btable thead{display:none}
+  .btable tr{display:flex;flex-wrap:wrap;gap:4px 10px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .btable td{border:0;padding:0;text-align:left}
+  .btable td.c-no{display:none}
+  .btable td.ttl{width:100%;order:-1;margin-bottom:4px}
+}
+.pager{display:flex;justify-content:center;gap:4px;margin-top:32px}
+.pager button{font:inherit;min-width:38px;height:38px;border:0;background:transparent;color:var(--gray);cursor:pointer;border-radius:999px}
+.pager button[aria-current="true"]{background:var(--ink);color:var(--paper);font-weight:600}
+.empty{padding:56px 0;text-align:center;color:var(--muted)}
+.post-head{padding:0 0 28px;border-bottom:1px solid var(--line)}
+.post-head h2{font-size:clamp(23px,2.6vw,30px);margin-top:14px;max-width:28em}
+.post-meta{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px;color:var(--muted);margin-top:14px}
+.post-files{margin-top:24px;border:1px solid var(--line);border-radius:10px;padding:16px 20px;font-size:14.5px;display:flex;flex-direction:column;gap:8px}
+.post-files a{font-weight:500}
+.post-body{padding:36px 0;white-space:pre-line;font-size:16.5px;line-height:1.85;max-width:42em}
+.post-table{max-width:42em;margin-bottom:36px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;padding-bottom:40px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+.post-nav{border-top:1px solid var(--ink);font-size:15px}
+.post-nav a{display:grid;grid-template-columns:5em minmax(0,1fr);gap:12px;padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.post-nav a:hover span:last-child{color:var(--red)}
+.post-nav span:first-child{color:var(--muted);font-size:14px}
+.back{margin-top:32px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.addr{font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);font-weight:600;line-height:1.5;margin:0}
+.copy{font:inherit;font-size:13.5px;font-weight:600;border:1px solid var(--line-strong);background:var(--paper);color:var(--gray);padding:7px 14px;border-radius:999px;cursor:pointer;margin-top:16px}
+.copy:hover{border-color:var(--ink)}
+
+/* footer */
+footer{background:var(--foot-bg);color:var(--foot-fg);padding-block:56px 40px;font-size:13.5px}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:40px}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+footer .fbrand{display:flex;gap:12px;align-items:center;color:#fff;font-size:16px;font-weight:600}
+footer .fbrand img{width:30px}
+footer dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:20px 0 0}
+footer dt{color:#fff;opacity:.75}
+footer dd{margin:0}
+footer .flinks{display:flex;flex-direction:column;gap:10px}
+footer .flinks a{text-decoration:none;color:#fff;opacity:.85}
+footer .flinks a:hover{opacity:1;text-decoration:underline}
+footer .watch{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:24px}
+footer .org{display:inline-flex;align-items:center;height:52px;padding:0 18px;border-radius:8px;background:#fff;color:#1F1D20;text-decoration:none;font-weight:600;font-size:13.5px}
+footer .org img{height:30px;width:auto;max-width:none}
+footer .watch + .cr{border-top:0;padding-top:4px}
+footer .org:hover{outline:2px solid var(--red);outline-offset:1px}
+footer .cr{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:22px;font-size:12.5px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="소상공인연구원 홈">
+      <img src="img/symbol.png" alt="">
+      <span><b>소상공인연구원</b><small>Korea Micro Business Institute</small></span>
+    </a>
+    <nav class="nav" aria-label="주 메뉴">
+      <a href="#about" data-nav="about">연구원 소개</a>
+      <a href="#research" data-nav="research">연구보고서</a>
+      <a href="#disclosure" data-nav="disclosure">공익법인 공시</a>
+      <a href="#board" data-nav="board">게시판</a>
+      <a href="#contact" data-nav="contact">오시는 길</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ================= HOME ================= -->
+<div class="view" id="v-home">
+  <section class="hero">
+    <canvas id="dots" aria-hidden="true"></canvas>
+    <img class="mark" src="img/symbol.png" alt="" aria-hidden="true">
+    <div class="wrap">
+      <h1>작은 가게의 현장에서 정책의 근거를 만듭니다</h1>
+      <p class="lead">사단법인 소상공인연구원은 600만 소상공인과 도시형 소공인의 경영 현장을 조사하고, 실효성 있는 정책 대안을 제안하는 비영리 정책연구기관입니다.</p>
+      <div class="actions">
+        <a class="btn primary" href="#research">연구보고서 보기</a>
+        <a class="btn" href="#disclosure">공익법인 공시</a>
+      </div>
+    </div>
+    <div class="facts-strip">
+      <div class="wrap">
+        <div><b class="num">2016</b>중소기업청 설립허가</div>
+        <div><b>중소벤처기업부</b>주무관청</div>
+        <div><b>공익법인</b>기부금 실적 매년 공개</div>
+        <div><b>성수·중구·문래</b>소공인 집적지 현장연구</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap work">
+      <div class="intro">
+        <h2>하는 일</h2>
+        <p>골목 상권과 도심 제조업 집적지를 직접 조사하고, 그 결과를 연구와 토론회를 거쳐 정책 제안으로 이어갑니다.</p>
+      </div>
+      <dl>
+        <div><dt>실태조사</dt><dd>상권·업종·소공인 집적지의 경영 실태와 상가임대차 현황을 현장에서 조사합니다.</dd></div>
+        <div><dt>정책연구</dt><dd>소상공인 정책 거버넌스, 입법 과제, 도심제조업 혁신 방안을 연구합니다.</dd></div>
+        <div><dt>토론회·포럼</dt><dd>학계와 현장, 정부가 함께하는 정책토론회와 간담회를 엽니다.</dd></div>
+        <div><dt>현장 지원</dt><dd>원산지표시 시민감시단 교육, 소공인 협업사업처럼 현장에 필요한 활동을 지원합니다.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block mist">
+    <div class="wrap split">
+      <div>
+        <div class="sec-head"><h2>최근 소식</h2><a class="more" href="#board">게시판 전체</a></div>
+        <ul class="news" id="home-news"></ul>
+      </div>
+      <div>
+        <div class="sec-head"><h2>공익법인 공시</h2><a class="more" href="#disclosure">자세히</a></div>
+        <div class="ledger">
+          <h3>결산 및 기부금 현황</h3>
+          <div class="unit">국세청 결산서류 공시 기준, 단위: 원</div>
+          <table class="num">
+            <thead><tr><th scope="col">사업연도</th><td>수익</td><td>비용</td><td>기부금</td></tr></thead>
+            <tbody>
+              <tr><th scope="row">2025</th><td>2,102,760</td><td>31,603,176</td><td>0</td></tr>
+              <tr><th scope="row">2024</th><td>17,722,728</td><td>27,159,760</td><td>0</td></tr>
+              <tr><th scope="row">2023</th><td>27,531,607</td><td>48,054,468</td><td>0</td></tr>
+            </tbody>
+          </table>
+          <p>결산서류 원문은 공시자료 게시판과 국세청 홈택스에서 확인할 수 있습니다.</p>
+          <a class="btn" href="#disclosure">결산공시와 기부금 실적 보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>발간 보고서</h2><p>연구원이 수행한 조사·연구 결과입니다.</p></div><a class="more" href="#research">전체 보기</a></div>
+      <div class="shelf" id="home-reports"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div class="view" id="v-about" hidden>
+  <div class="page-title"><div class="wrap"><h1><img src="img/symbol.png" alt="">연구원 소개</h1><p>사단법인 소상공인연구원의 설립 목적과 연혁, 상징을 소개합니다.</p></div></div>
+  <section class="block">
+    <div class="wrap about-grid">
+      <div class="prose">
+        <p class="big">소상공인의 경영 현장에서 출발해, 근거 있는 정책을 만듭니다.</p>
+        <p>사단법인 소상공인연구원은 2016년 중소기업청(현 중소벤처기업부)의 설립허가를 받아 출범한 비영리 사단법인입니다. 소상공인과 도시형 소공인의 사회·경제적 역할을 조사하고, 이들이 안정적으로 경영할 수 있는 정책 환경을 만드는 데 필요한 연구를 수행합니다.</p>
+        <p>성수동 수제화, 중구 패션봉제, 문래동 기계금속 등 도시 제조업 집적지의 실태조사와 상가임대차 조사, 소상공인 정책 거버넌스 연구를 이어 왔으며, 정책토론회를 통해 연구 결과를 정책 현장과 나누고 있습니다.</p>
+      </div>
+      <div>
+        <table class="facts">
+          <tr><th>법인명</th><td>사단법인 소상공인연구원<br><span style="color:var(--muted)">Korea Micro Business Institute (KMBI)</span></td></tr>
+          <tr><th>대표자</th><td>이사장 이윤희</td></tr>
+          <tr><th>설립허가</th><td class="num">2016. 1. 13. (중소기업청장)</td></tr>
+          <tr><th>법인등기</th><td class="num">2016. 3. 4.</td></tr>
+          <tr><th>주무관청</th><td>중소벤처기업부</td></tr>
+          <tr><th>법인 구분</th><td>민법상 비영리 사단법인, 공익법인</td></tr>
+          <tr><th>소재지</th><td>서울특별시 동대문구 청계천로 433, 1101호</td></tr>
+          <tr><th>사업자등록번호</th><td class="num">329-82-00116</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="block">
+    <div class="wrap about-grid">
+      <div>
+        <div class="sec-head"><h2>연혁</h2></div>
+        <ul class="timeline" id="timeline"></ul>
+      </div>
+      <div>
+        <div class="sec-head"><h2>심벌마크</h2></div>
+        <div class="ci">
+          <img src="img/symbol.png" alt="소상공인연구원 심벌마크">
+          <div>
+            <p>수많은 작은 점은 600만 소상공인을, 붉은색은 사업의 성공을 꿈꾸는 소상공인의 경영 의지를 나타냅니다.</p>
+            <p>큰 원을 중심으로 모인 작은 원들은 소상공인을 전문적이고 체계적으로 뒷받침하는 연구원의 역할을 뜻합니다.</p>
+            <div class="swatches"><span><i style="background:#C8002B"></i>심벌 레드</span><span><i style="background:#4A474B"></i>그레이</span><span><i style="background:#C9A400"></i>골드</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= RESEARCH ================= -->
+<div class="view" id="v-research" hidden>
+  <div class="page-title"><div class="wrap"><h1><img src="img/symbol.png" alt="">연구보고서</h1><p>연구원이 수행한 실태조사와 정책연구, 연구용역 결과입니다.</p></div></div>
+  <section class="block">
+    <div class="wrap">
+      <div class="board-tools"><div class="filters" id="rep-filters"></div></div>
+      <div class="reports" id="all-reports" style="margin-top:28px"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= DISCLOSURE ================= -->
+<div class="view" id="v-disclosure" hidden>
+  <div class="page-title"><div class="wrap"><h1><img src="img/symbol.png" alt="">공익법인 공시</h1><p>사단법인 소상공인연구원은 공익법인으로서 매 사업연도 결산서류를 공시하고, 기부금 모금액과 활용실적을 공개합니다.</p></div></div>
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>결산서류 공시</h2><p>「상속세 및 증여세법」 제50조의3에 따라 국세청에 공시한 결산 내용입니다. 단위: 원</p></div><a class="more" href="files/settlement_2023-2025.pdf" target="_blank" rel="noopener">공시서식 원문 PDF</a></div>
+      <div class="dtable-wrap">
+        <table class="dtable num">
+          <thead><tr><th>사업연도</th><th>자산</th><th>부채</th><th>수익</th><th>비용</th></tr></thead>
+          <tbody>
+            <tr><td>2025</td><td class="r">18,206,275</td><td class="r">204,050,352</td><td class="r">2,102,760</td><td class="r">31,603,176</td></tr>
+            <tr><td>2024</td><td class="r">10,318,828</td><td class="r">196,657,944</td><td class="r">17,722,728</td><td class="r">27,159,760</td></tr>
+            <tr><td>2023</td><td class="r">8,885,393</td><td class="r">189,095,364</td><td class="r">27,531,607</td><td class="r">48,054,468</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">공익법인 결산서류 등의 공시(간편서식) 기준입니다. 세부 내역은 첨부한 공시서식 원문과 국세청 홈택스 공익법인 공시 메뉴에서 「소상공인연구원」 또는 사업자등록번호 329-82-00116으로 검색해 확인하실 수 있습니다.</div>
+    </div>
+  </section>
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>기부금 모금액 및 활용실적</h2><p>매 사업연도 종료일부터 4개월 이내에 공개합니다. 단위: 원</p></div></div>
+      <div class="dtable-wrap">
+        <table class="dtable num">
+          <thead><tr><th>사업연도</th><th>기부금 모금액</th><th>기부금 활용실적</th><th>비고</th><th>공시글</th></tr></thead>
+          <tbody>
+            <tr><td>2025</td><td class="r">0</td><td class="r">0</td><td>모금 실적 없음</td><td><a href="#post-7">보기</a></td></tr>
+            <tr><td>2024</td><td class="r">0</td><td class="r">0</td><td>모금 실적 없음</td><td><a href="#post-6">보기</a></td></tr>
+            <tr><td>2023</td><td class="r">0</td><td class="r">0</td><td>모금 실적 없음</td><td><a href="#post-5">보기</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="block mist">
+    <div class="wrap">
+      <div class="sec-head"><div><h2>공익위반 사항 제보</h2><p>연구원의 공익위반 사항은 아래 기관에 제보할 수 있습니다.</p></div></div>
+      <div class="links">
+        <a href="https://www.nts.go.kr" target="_blank" rel="noopener"><b>국세청</b><span>탈세 및 공익법인 의무 위반 제보</span><small>www.nts.go.kr</small></a>
+        <a href="https://www.clean.go.kr" target="_blank" rel="noopener"><b>국민권익위원회</b><span>청렴포털 공익신고</span><small>www.clean.go.kr</small></a>
+        <a href="https://www.mss.go.kr" target="_blank" rel="noopener"><b>중소벤처기업부</b><span>주무관청 민원</span><small>www.mss.go.kr</small></a>
+        <a href="https://www.hometax.go.kr" target="_blank" rel="noopener"><b>국세청 홈택스</b><span>공익법인 결산서류 공시 조회</span><small>www.hometax.go.kr</small></a>
+        <a href="#board" data-cat="공시자료"><b>공시자료 게시판</b><span>연도별 공시글과 첨부자료</span><small>바로가기</small></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= BOARD ================= -->
+<div class="view" id="v-board" hidden>
+  <div class="page-title"><div class="wrap"><h1><img src="img/symbol.png" alt="">게시판</h1><p>공지사항, 공시자료, 연구원 동향을 게시합니다.</p></div></div>
+  <section class="block">
+    <div class="wrap">
+      <div id="board-list">
+        <div class="board-tools">
+          <div class="filters" id="cat-filters"></div>
+          <form class="search" id="search-form" role="search">
+            <input id="q" type="search" placeholder="제목, 내용 검색" aria-label="게시물 검색">
+            <button type="submit">검색</button>
+          </form>
+        </div>
+        <table class="btable">
+          <thead><tr><th class="c-no">번호</th><th class="c-cat">분류</th><th>제목</th><th class="c-date">등록일</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="pager" id="pager"></div>
+      </div>
+      <article id="board-post" hidden></article>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<div class="view" id="v-contact" hidden>
+  <div class="page-title"><div class="wrap"><h1><img src="img/symbol.png" alt="">오시는 길</h1></div></div>
+  <section class="block">
+    <div class="wrap contact">
+      <div>
+        <p class="addr" id="addr-text">서울특별시 동대문구 청계천로 433, 1101호</p>
+        <button class="copy" id="copy-addr" type="button">주소 복사</button>
+        <table class="facts" style="margin-top:36px" id="contact-facts"></table>
+      </div>
+      <div class="links" style="grid-template-columns:1fr">
+        <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EB%8F%99%EB%8C%80%EB%AC%B8%EA%B5%AC%20%EC%B2%AD%EA%B3%84%EC%B2%9C%EB%A1%9C%20433" target="_blank" rel="noopener"><b>네이버 지도에서 보기</b><span>동대문구 청계천로 433</span><small>map.naver.com</small></a>
+        <a href="https://map.kakao.com/?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EB%8F%99%EB%8C%80%EB%AC%B8%EA%B5%AC%20%EC%B2%AD%EA%B3%84%EC%B2%9C%EB%A1%9C%20433" target="_blank" rel="noopener"><b>카카오맵에서 보기</b><span>동대문구 청계천로 433</span><small>map.kakao.com</small></a>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="fbrand"><img src="img/symbol-white.png" alt="">사단법인 소상공인연구원</div>
+      <dl id="foot-dl"></dl>
+    </div>
+    <div class="flinks">
+      <a href="#disclosure">공익법인 공시</a>
+      <a href="https://www.hometax.go.kr" target="_blank" rel="noopener">국세청 홈택스 공익법인 공시</a>
+      <a href="https://www.nts.go.kr" target="_blank" rel="noopener">국세청 공익위반 제보</a>
+      <a href="https://www.clean.go.kr" target="_blank" rel="noopener">국민권익위원회 청렴포털</a>
+    </div>
+    <div class="watch" aria-label="관련 기관 공식 홈페이지">
+      <a class="org" href="https://www.nts.go.kr" target="_blank" rel="noopener" title="국세청 공식 홈페이지"><img src="img/org/nts.png" alt="국세청"></a>
+      <a class="org" href="https://www.acrc.go.kr" target="_blank" rel="noopener" title="국민권익위원회 공식 홈페이지"><img src="img/org/acrc.png" alt="국민권익위원회"></a>
+      <a class="org" href="https://www.mss.go.kr" target="_blank" rel="noopener" title="중소벤처기업부 공식 홈페이지"><img src="img/org/mss.png" alt="중소벤처기업부"></a>
+    </div>
+    <div class="cr">© 사단법인 소상공인연구원 Korea Micro Business Institute</div>
+  </div>
+</footer>
+
+<script src="board-data.js"></script>
+<script>
+(function(){
+const SITE = window.SITE || {};
+const POSTS = (window.POSTS || []).slice().sort((a,b)=>b.id-a.id);
+const CATS = ["전체","공지사항","공시자료","연구원 동향"];
+
+const REPORTS = [
+  {y:"2025.12", n:"2025 소공인 경영 현황 및 인식조사 용역 보고서", img:"r21.png", t:"실태조사"},
+  {y:"2025.12", n:"2025 전국 소공인 대토론회 자료집", img:"r19.png", t:"토론회"},
+  {y:"2024.12", n:"경기도시장상권진흥원 경영환경개선사업 정량지표 개발 최종보고서", img:"r23.png", t:"정책연구"},
+  {y:"2023.11", n:"봉제원단 폐기물 분리배출 실태조사 결과 보고서", img:"r24.png", t:"실태조사"},
+  {y:"2023.06", n:"탄소국경세 대비 소상공인 생존전략: 소상공인과 ESG 토론회 자료집", img:"r25.png", t:"토론회"},
+  {y:"2021.04", n:"강동구 솔루션앵커 사업화 모델발굴 용역 결과보고서", img:"r26.png", t:"정책연구"},
+  {y:"2020.12", n:"2020 지속가능발전구역 및 성수카페거리 상가임대차 실태조사", img:"r02", t:"실태조사"},
+  {y:"2020.12", n:"도시형 소공인 집적지구 실태조사 연구", img:"r06", t:"실태조사"},
+  {y:"2020.12", n:"봉제원단 폐기물 재활용 활성화 방안 연구", img:"r07", t:"정책연구"},
+  {y:"2020.12", n:"성수 소공인과 대기업 연계 맞춤신발 공동 제조판매 협업사업", img:"r09", t:"현장지원"},
+  {y:"2020.12", n:"공산품 원산지 시민감시단 운영", img:"r04", t:"현장지원"},
+  {y:"2020.04", n:"4차 산업혁명 시대 도심제조업 혁신성장을 위한 지원 방안 연구", img:"r03", t:"정책연구"},
+  {y:"2019.12", n:"2019 지속가능발전구역 상가임대차 실태조사", img:"r01", t:"실태조사"},
+  {y:"2019.12", n:"공산품 원산지표시 시민감시단 교육 운영", img:"r05", t:"현장지원"},
+  {y:"2019.12", n:"서대문구 미디어 메이커스페이스 구축 연구용역", img:"r08", t:"정책연구"},
+  {y:"2017.12", n:"성수 수제화산업 활성화를 위한 산업구조 개선 방안과 이해관계자 참여형 거버넌스 체계 구축", img:"r12", t:"정책연구"},
+  {y:"2017.12", n:"중구 패션봉제 실태조사 및 활성화 방안 연구", img:"r16", t:"실태조사"},
+  {y:"2017.10", n:"중소벤처기업부 설치에 따른 소상공인 정책 거버넌스 구축", img:"r17", t:"정책연구"},
+  {y:"2017.06", n:"2017년 성수동 수제화 사업체 실태조사", img:"r10", t:"실태조사"},
+  {y:"2017.05", n:"소상공인의 사회·경제적 중요성과 정책기관의 역할 (정책토론회 자료집)", img:"r15", t:"토론회"},
+  {y:"2017.03", n:"경제민주화를 위한 중장기 정책 과제: 중소기업 및 소공인을 중심으로", img:"r11", t:"정책연구"},
+  {y:"2016.12", n:"소공인 산업 활성화와 구조 고도화를 위한 입법정책 방향과 과제: 의류제조업을 중심으로", img:"r13", t:"정책연구"},
+  {y:"2016.12", n:"소상공인 정책 AGENDA 발굴 및 제안을 위한 연구", img:"r14", t:"정책연구"},
+  {y:"2016.12", n:"지역 가죽패션 산업 관련 실태 조사 연구", img:"r18", t:"실태조사"}
+];
+
+const HISTORY = [
+  ["2025",[["12","「2025 전국 소공인 대토론회」 개최 (국회의원회관), 「2025 소공인 경영 현황 및 인식조사」 보고서 발간"]]],
+  ["2024",[["12","경기도시장상권진흥원 「경영환경개선사업 정량지표 개발」 연구 수행"]]],
+  ["2023",[["12","소상공인 ESG 포럼 발대식 개최"],["11","서울시 「봉제원단 폐기물 분리배출 시범사업 실태조사」 수행"],["06","「탄소국경세 대비 소상공인 생존전략: 소상공인과 ESG」 국회 토론회 개최"]]],
+  ["2022",[["09","「원단폐기물 처리 개선방안 연구」 수행 (서울시동북권패션봉제발전협의회)"]]],
+  ["2021",[["12","「2021 지속가능발전구역 등 상가임대차 실태조사」 수행 (성동구)"],["10","「골목형상점가 활성화 방안에 관한 연구」 수행 (송파구의회)"],["04","「강동구 솔루션앵커 사업화 모델발굴 용역」 결과보고서 발간 (서울시)"]]],
+  ["2020",[["12","「도시형 소공인 집적지구 실태조사 연구」 등 연구용역 4건 수행"],["04","「4차 산업혁명 시대 도심제조업 혁신성장을 위한 지원 방안 연구」 발간"],["","지정기부금단체(현 공익법인) 지정 (3분기)"]]],
+  ["2019",[["12","「2019 지속가능발전구역 상가임대차 실태조사」 발간"],["08","공산품 원산지표시 시민감시단 발대식, 교육 운영"],["06","원산지표시 위반 근절을 통한 소상공인 육성 정책토론회 개최"],["03","정기이사회 및 정기총회 개최, 정재철 제2대 원장 취임"]]],
+  ["2018",[["12","「2018 지속가능발전구역 상가임대차 실태조사」 보고서 발간"],["10","임시이사회 및 임시총회 개최, 이윤희 제3대 이사장 취임"],["06","일자리 창출을 위한 소상공인 경쟁력 강화 정책토론회 개최"],["02","정기이사회 및 정기총회 개최"]]],
+  ["2017",[["12","「중구 패션봉제 실태조사 및 활성화 방안 연구」, 「성수 수제화산업 활성화를 위한 산업구조 개선 방안」 발간"],["10","「중소벤처기업부 설치에 따른 소상공인 정책 거버넌스 구축」 발간"],["06","「성수동 수제화 사업체 실태조사」 발간"],["05","「소상공인의 사회·경제적 중요성과 정책기관의 역할」 정책토론회 개최"],["02","정기이사회 및 정기총회 개최"]]],
+  ["2016",[["12","「소상공인 정책 AGENDA 발굴 및 제안을 위한 연구」 등 보고서 발간"],["03","소상공인연구원 개원 및 비전 선포식 (3월 30일)"],["03","법인 설립등기 (3월 4일)"],["01","중소기업청 비영리 사단법인 설립허가 (1월 13일)"]]]
+];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* reports */
+function bookHTML(r){
+  return `<div class="book"><div class="cover"><img loading="lazy" src="img/reports/${/\./.test(r.img)?r.img:r.img+".jpg"}" alt="${esc(r.n)} 표지"></div><div class="meta"><span class="y num">${r.y}</span><span class="pill">${r.t}</span></div><div class="n">${esc(r.n)}</div></div>`;
+}
+$("#home-reports").innerHTML = REPORTS.slice(0,8).map(bookHTML).join("");
+let repFilter = "전체";
+function renderReports(){
+  const types = ["전체","실태조사","정책연구","토론회","현장지원"];
+  $("#rep-filters").innerHTML = types.map(t=>`<button class="chip" type="button" aria-pressed="${t===repFilter}" data-t="${t}">${t}</button>`).join("");
+  $("#all-reports").innerHTML = REPORTS.filter(r => repFilter==="전체" || r.t===repFilter).map(bookHTML).join("");
+}
+$("#rep-filters").addEventListener("click", e=>{const b=e.target.closest("[data-t]"); if(!b) return; repFilter=b.dataset.t; renderReports();});
+renderReports();
+
+/* history */
+$("#timeline").innerHTML = HISTORY.map(([y,items]) =>
+  `<li class="yr"><b class="num">${y}</b><div>${items.map(([m,t])=>`<div class="ev"><span class="num">${m?m+"월":""}</span><div>${esc(t)}</div></div>`).join("")}</div></li>`
+).join("");
+
+/* site facts */
+const facts = [["대표자", "이사장 " + (SITE.ceo||"")], ["사업자등록번호", SITE.bizNo], ["주소", SITE.address], ["대표전화", SITE.tel], ["팩스", SITE.fax], ["이메일", SITE.email], ["주무관청", SITE.ministry]].filter(r=>r[1]);
+$("#foot-dl").innerHTML = facts.map(([k,v])=>`<dt>${k}</dt><dd class="num">${esc(v)}</dd>`).join("");
+$("#contact-facts").innerHTML = facts.filter(r=>r[0]!=="주무관청").map(([k,v])=>`<tr><th>${k}</th><td class="num">${esc(v)}</td></tr>`).join("");
+if (SITE.address) $("#addr-text").textContent = SITE.address;
+$("#copy-addr").addEventListener("click", e=>{
+  const btn = e.currentTarget, txt = $("#addr-text").textContent;
+  const done = () => { btn.textContent = "복사했습니다"; setTimeout(()=>btn.textContent="주소 복사", 1600); };
+  const fallback = () => { const r=document.createRange(); r.selectNodeContents($("#addr-text")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent="주소를 선택했습니다"; };
+  try { navigator.clipboard.writeText(txt).then(done, fallback); } catch(_) { fallback(); }
+});
+
+/* board */
+const pill = c => `<span class="pill ${c==="공시자료"?"red":""}">${c}</span>`;
+$("#home-news").innerHTML = POSTS.slice(0,5).map(p=>
+  `<li><a href="#post-${p.id}">${pill(p.cat)}<span class="t">${esc(p.title)}</span><span class="d num">${p.date}</span></a></li>`
+).join("") || `<li class="empty">등록된 게시물이 없습니다.</li>`;
+
+let cat = "전체", query = "", page = 1;
+const PER = 10;
+function filtered(){
+  const q = query.trim().toLowerCase();
+  return POSTS.filter(p => (cat==="전체" || p.cat===cat) && (!q || (p.title+" "+p.body).toLowerCase().includes(q)));
+}
+function renderList(){
+  $("#cat-filters").innerHTML = CATS.map(c=>`<button class="chip" type="button" aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join("");
+  const list = filtered();
+  const pages = Math.max(1, Math.ceil(list.length/PER));
+  page = Math.min(page, pages);
+  const slice = list.slice((page-1)*PER, page*PER);
+  $("#rows").innerHTML = slice.length ? slice.map(p=>{
+    const nf = (p.files||[]).length;
+    return `<tr><td class="c-no num">${p.id}</td><td class="c-cat">${pill(p.cat)}</td><td class="ttl"><a href="#post-${p.id}">${esc(p.title)}</a>${nf?`<span class="clip">첨부 ${nf}</span>`:""}</td><td class="c-date num">${p.date}</td></tr>`;
+  }).join("") : `<tr><td colspan="4" class="empty">${query?"검색 결과가 없습니다. 다른 낱말로 검색해 보세요.":"등록된 게시물이 없습니다."}</td></tr>`;
+  $("#pager").innerHTML = pages>1 ? Array.from({length:pages},(_,i)=>`<button type="button" data-p="${i+1}" aria-current="${i+1===page}">${i+1}</button>`).join("") : "";
+}
+$("#cat-filters").addEventListener("click", e=>{const b=e.target.closest("[data-c]"); if(!b) return; cat=b.dataset.c; page=1; renderList();});
+$("#pager").addEventListener("click", e=>{const b=e.target.closest("[data-p]"); if(!b) return; page=+b.dataset.p; renderList(); $("#board-list").scrollIntoView({block:"start"});});
+$("#search-form").addEventListener("submit", e=>{e.preventDefault(); query=$("#q").value; page=1; renderList();});
+document.querySelectorAll("[data-cat]").forEach(a=>a.addEventListener("click",()=>{cat=a.dataset.cat; page=1;}));
+
+function renderPost(id){
+  const i = POSTS.findIndex(p=>p.id===id);
+  const p = POSTS[i];
+  const el = $("#board-post");
+  if(!p){ el.innerHTML = `<div class="empty">게시물을 찾을 수 없습니다. <a href="#board">목록으로 돌아가기</a></div>`; return; }
+  const newer = POSTS[i-1], older = POSTS[i+1];
+  const files = (p.files||[]).map(f=>`<div>첨부파일 <a href="${esc(f.path)}" target="_blank" rel="noopener">${esc(f.name)}</a></div>`).join("");
+  const table = p.table ? `<div class="dtable-wrap post-table"><table class="dtable num"><thead><tr>${p.table.head.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${p.table.rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : "";
+  el.innerHTML = `
+    <div class="post-head">${pill(p.cat)}<h2>${esc(p.title)}</h2>
+      <div class="post-meta"><span class="num">등록일 ${p.date}</span><span>작성 사단법인 소상공인연구원</span></div>
+      ${files?`<div class="post-files">${files}</div>`:""}</div>
+    <div class="post-body">${esc(p.body)}</div>
+    ${table}
+    ${(p.images||[]).length?`<div class="gallery">${p.images.map(s=>`<img loading="lazy" src="${esc(s)}" alt="${esc(p.title)} 사진">`).join("")}</div>`:""}
+    <nav class="post-nav">
+      ${newer?`<a href="#post-${newer.id}"><span>다음글</span><span>${esc(newer.title)}</span></a>`:""}
+      ${older?`<a href="#post-${older.id}"><span>이전글</span><span>${esc(older.title)}</span></a>`:""}
+    </nav>
+    <div class="back"><a class="btn" href="#board">목록으로</a></div>`;
+}
+
+/* router */
+const VIEWS = ["home","about","research","disclosure","board","contact"];
+function route(){
+  let h = (location.hash||"#home").slice(1);
+  let postId = null;
+  if (/^post-\d+$/.test(h)) { postId = +h.slice(5); h = "board"; }
+  if (!VIEWS.includes(h)) h = "home";
+  VIEWS.forEach(v => $("#v-"+v).hidden = v!==h);
+  document.querySelectorAll("[data-nav]").forEach(a => a.setAttribute("aria-current", a.dataset.nav===h ? "page" : "false"));
+  if (h==="board") {
+    $("#board-list").hidden = postId!==null;
+    $("#board-post").hidden = postId===null;
+    postId!==null ? renderPost(postId) : renderList();
+  }
+  window.scrollTo(0,0);
+  if (h==="home") drawField(true);
+}
+addEventListener("hashchange", route);
+
+/* CI dot field: the symbol's rings continue outward, getting smaller and fainter */
+const cv = $("#dots"), mark = document.querySelector(".hero .mark");
+const ctx = cv.getContext("2d");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let dots = [], t0 = null;
+function build(){
+  const r = cv.getBoundingClientRect(); if(!r.width) return;
+  const dpr = Math.min(2, devicePixelRatio||1);
+  cv.width = r.width*dpr; cv.height = r.height*dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  const cx = r.width/2, cy = r.height/2, S = mark.getBoundingClientRect().width;
+  dots = [];
+  for (let j=1;j<=14;j++){
+    const d = S*(0.43 + j*0.085), rad = Math.max(0.8, S*0.021*Math.pow(0.88,j));
+    const n = Math.round(2*Math.PI*d/(S*0.082));
+    const off = (j%2) * Math.PI/n;
+    for (let k=0;k<n;k++){ const a = off + k*2*Math.PI/n; dots.push({x:cx+Math.cos(a)*d, y:cy+Math.sin(a)*d, r:rad, j, alpha:Math.max(0.07, 0.8 - j*0.065)}); }
+  }
+}
+function paint(t){
+  const r = cv.getBoundingClientRect();
+  ctx.clearRect(0,0,r.width,r.height);
+  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--red").trim() || "#C8002B";
+  for (const p of dots){
+    let k = 1;
+    if (t0!==null) k = Math.max(0.4, Math.min(1, 0.4 + ((t-t0)/1100 - p.j*0.05)));
+    ctx.globalAlpha = p.alpha; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*k,0,Math.PI*2); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  if (t0!==null && t-t0 < 2200) requestAnimationFrame(paint); else t0 = null;
+}
+let animated = false;
+function drawField(first){
+  build();
+  if (first && !animated && !reduce){ animated = true; requestAnimationFrame(t=>{t0=t; paint(t);}); }
+  else paint(0);
+}
+addEventListener("resize", ()=>{ if(!$("#v-home").hidden) drawField(false); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ()=>drawField(false));
+route();
+if (!mark.complete) mark.addEventListener("load", ()=>{ if(!$("#v-home").hidden) drawField(true); });
+})();
+</script>
+
+</body>
+</html>
