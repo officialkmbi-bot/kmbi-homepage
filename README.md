@@ -3,8 +3,9 @@
 사단법인 소상공인연구원(Korea Micro Business Institute)의 공식 홈페이지 소스입니다.
 서버 프로그램이나 데이터베이스 없이 **파일만으로 동작하는 정적 사이트**라서, 이 폴더만 있으면 누구든 이어서 관리할 수 있습니다.
 
-- 공개 주소: (GitHub Pages 설정 후 여기에 기입) 예) https://아이디.github.io/kmbi-homepage/
-- 관리 계정: 연구원 공용 메일 official.kmbi@gmail.com 으로 만든 GitHub 계정
+- 공개 주소: https://officialkmbi-bot.github.io/kmbi-homepage/
+- 소스 저장소: https://github.com/officialkmbi-bot/kmbi-homepage
+- 관리 계정: GitHub 아이디 `officialkmbi-bot` (연구원 공용 메일 official.kmbi@gmail.com 으로 가입)
 - 최초 제작: 2026년 10월
 
 > 이 홈페이지는 공익법인 지정 요건(기부금 모금액·활용실적 공개, 공익위반 제보기관 홈페이지 연결)을 충족하기 위한 것입니다. 매년 공시 내용을 갱신해 주세요.
